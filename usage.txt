@@ -1,0 +1,18 @@
+usage: create-component <name> [<args>]
+
+creates a base-line React component. use multiple names to create
+multiple components. ~*~ Be sure to camel-case! ~*~
+
+args
+
+  --base-path   set the base path of the output (default: `./src`)
+  --component   (default) writes component to `./src/components`
+  --container   writes component to `./src/containers`
+  --screen      writes component to `./src/screens`
+
+  --es6         (default) write the component using es6 modules
+                (eg. 'import/export')
+  --cjs         write the component using CommonJS modules
+                (eg. 'require')
+
+  -h, --help    this screen
