@@ -32,9 +32,6 @@ module.exports = function createReactComponent (name, opts, cb) {
   const base = opts.basePath || path.resolve(__dirname, 'src')
   const fullPath = path.resolve(base, opts.type + 's')
 
-  console.log({fullPath})
-  process.exit(0)
-
   return mkdirp(fullPath, err => {
     if (err) {
       return cb(err)
