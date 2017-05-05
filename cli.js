@@ -1,20 +1,17 @@
 #!/usr/bin/env node
-
-function usage () {
-  return fs.createReadStream('./usage.txt').pipe(process.stdout)
-}
+const fs = require('fs')
+const path = require('path')
 
 const opts = {
   boolean: ['cjs', 'es6', 'screen', 'container', 'component'],
-  unknown: usage,
 }
 
-const fs = require('fs')
 const args = require('minimist')(process.argv.slice(2), opts)
 const factory = require('./')
 
 if (args.h || args.help || args._.length === 0) {
-  return usage()
+  return fs.createReadStream(path.join(__dirname, 'usage.txt'))
+    .pipe(process.stdout)
 }
 
 const mode = args.cjs ? 'cjs' : 'es6'
@@ -34,7 +31,7 @@ const options = {mode, type, basePath}
     return
 
   const name = args._.shift()
-  factory(name, options, err => {
+  return factory(name, options, err => {
     if (err) throw err
 
     return loop()
