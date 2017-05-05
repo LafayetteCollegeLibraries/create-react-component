@@ -11,7 +11,7 @@ const opts = {
 
 const fs = require('fs')
 const args = require('minimist')(process.argv.slice(2), opts)
-const factory = require('./create-react-component')
+const factory = require('./')
 
 if (args.h || args.help || args._.length === 0) {
   return usage()
